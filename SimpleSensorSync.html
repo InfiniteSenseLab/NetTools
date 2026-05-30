@@ -770,6 +770,14 @@
             setConnectedUI(true);
             startReading();
             playBeep();
+
+            // 连接后自动加载当前设备参数（不保存不重启，仅读取EEPROM中的配置）
+            setTimeout(() => {
+                if (port) {
+                    log('自动获取设备当前参数...');
+                    loadConfig();
+                }
+            }, 500);
         } catch(e){
             log('连接失败: ' + e);
             port = null;
