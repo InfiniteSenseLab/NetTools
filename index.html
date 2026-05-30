@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>InfiniteSenseLab</title>
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
+        body{
+            font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+            background:#f3f5f9;
+            color:#222;
+            min-height:100vh;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+        }
+
+        .container{
+            text-align:center;
+        }
+
+        .title{
+            font-size:36px;
+            font-weight:700;
+            color:#1a1a2e;
+            margin-bottom:8px;
+        }
+
+        .subtitle{
+            font-size:16px;
+            color:#666;
+            margin-bottom:48px;
+        }
+
+        .cards{
+            display:flex;
+            gap:24px;
+            flex-wrap:wrap;
+            justify-content:center;
+        }
+
+        .card{
+            background:white;
+            border-radius:16px;
+            padding:40px 48px;
+            width:300px;
+            text-decoration:none;
+            color:inherit;
+            box-shadow:0 2px 12px rgba(0,0,0,0.06);
+            transition:transform 0.2s,box-shadow 0.2s;
+        }
+
+        .card:hover{
+            transform:translateY(-4px);
+            box-shadow:0 8px 30px rgba(0,0,0,0.1);
+        }
+
+        .card-icon{
+            font-size:48px;
+            margin-bottom:16px;
+        }
+
+        .card-title{
+            font-size:20px;
+            font-weight:600;
+            margin-bottom:8px;
+        }
+
+        .card-desc{
+            font-size:14px;
+            color:#888;
+            line-height:1.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">InfiniteSenseLab</h1>
+        <p class="subtitle">嵌入式调试与配置工具集 — InfiniteSenseLab</p>
+
+        <div class="cards">
+            <a href="SimpleMotor.html" class="card">
+                <div class="card-icon">⚙️</div>
+                <div class="card-title">SimpleMotor Studio</div>
+                <div class="card-desc">电机控制与调试工具</div>
+            </a>
+
+            <a href="sync_config.html" class="card">
+                <div class="card-icon">🔗</div>
+                <div class="card-title">SyncBoard Studio</div>
+                <div class="card-desc">多传感器同步板配置工具</div>
+            </a>
+        </div>
+    </div>
+</body>
+</html>
