@@ -714,7 +714,6 @@
             <button class="gray" onclick="exportConfig()">导出配置 (JSON)</button>
             <button class="gray" onclick="document.getElementById('importConfigFile').click()">导入配置 (JSON)</button>
             <input type="file" id="importConfigFile" accept=".json" style="display:none" onchange="importConfig(event)">
-            <button class="warning" onclick="sendFactoryReset()">恢复出厂</button>
         </div>
     </div>
 
@@ -915,10 +914,8 @@
             const level = data.l || 'INFO';
             const msg = data.msg || '';
             log('[设备 ' + level + '] ' + msg);
-        } else {
-            // IMU、GPS、PPS 等实时数据，截断显示
-            log('[数据] ' + JSON.stringify(data).substring(0, 120));
         }
+        // IMU、t、GPS 等实时数据不再打印到日志区
     }
 
     // ========== BUILD CONFIG ==========
@@ -1046,27 +1043,6 @@
         send(cmd);
         log('配置已上传，设备即将重启...');
         log('串口即将断开，请等待约5秒后重新连接');
-    }
-
-    function sendFactoryReset(){
-        if(!confirm('确定恢复出厂配置？设备将重启。')) return;
-        const cmd = {
-            f: "cfg",
-            port: 8888,
-            ip: [192,168,1,188],
-            subnet: [255,255,255,0],
-            hz_cam_1: 1, hz_cam_2: 1, hz_cam_3: 1, hz_cam_4: 1,
-            hz_imu_2: 10,
-            xtal_diff: 0,
-            uart_0_baud_rate: 921600,
-            uart_1_baud_rate: 9600,
-            uart_2_baud_rate: 115200,
-            use_gps: true,
-            use_pps: true,
-            version: 400
-        };
-        send(cmd);
-        log('出厂配置已发送，设备即将重启...');
     }
 
     function exportConfig(){
